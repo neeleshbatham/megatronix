@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block content%}
+
+<div class='container'>
+	 <div class="row">
+{%  for child in subcatparentchild %}
+		  <div class="col-md-3">
+				    <div class="thumbnail">
+				      <img src='{{ MEDIA_URL }}{{ child.image }}' alt="...">
+				      <div class="caption">
+				      	<a href="{% url 'products' child.slug %}">
+				        <h3>{{child.sub_cat_child_name}}</h3>
+				      </div>
+				  	</div>
+		  				</a>
+		  </div>	
+
+{% endfor %}
+	</div>
+</div>	
+
+{%  endblock %}

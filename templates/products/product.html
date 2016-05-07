@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block content%}
+
+<div class='container'>
+	 <div class="row">
+{%  for item in products %}
+		  <div class="col-md-3">
+				    <div class="thumbnail">
+				      <img src='{{ MEDIA_URL }}{{ item.image }}' alt="...">
+				      <div class="caption">
+				        <h3>{{item.title}}</h3>
+				        <h4>{{item.description}}</h4>
+				      </div>
+				  	</div>
+		  </div>	
+
+{% endfor %}
+	</div>
+</div>	
+
+{%  endblock %}

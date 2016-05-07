@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+
+
+<div class='container'>
+	 <div class="row">
+		  <div class="col-md-3" align="center">
+		    <fieldset>
+    		<legend>Ask for your requirement:</legend>
+		  <form action="{% url 'create' %}" method="POST" align="center">{% csrf_token %}
+			  <ul>
+			  	{{form|crispy}}
+			  </ul>
+		  <input id='button' class="btn btn-success" role="group" aria-label="..."type="submit" name="submit" value="Send Query"></input>
+		  </fieldset>
+		  </form>
+
+			</div>
+	</div>	
+
+</div>
+<script type="text/javascript">
+	$('#button').on('click',function(){
+		alert('Query Sent');
+	}
+	);
+</script>
+{%  endblock %}

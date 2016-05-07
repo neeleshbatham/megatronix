@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+
+<div class='container'>
+	 <div class="row">
+{%  for parent in subcatparent %}
+		  <div class="col-md-3">
+				    <div class="thumbnail">
+				      <img src='{{ MEDIA_URL }}{{ parent.image }}' alt="...">
+				      <div class="caption">
+				      	<a href="{% url 'sub_category_child' parent.slug %}">
+				        <h3>{{parent.sub_cat_parent_name}}</h3>
+				        </a>
+				        {% for child in parent.subcategorychild_set.all %}
+				        {% for prod in products %}
+						<a href="{% url 'products' prod.slug %}">
+				        	<p>{{child.sub_cat_child_name}}</p>
+				        </a>
+				        {% endfor %}
+				        {% endfor %}
+				      </div>
+				  	</div>
+		  				
+		  </div>	
+
+{% endfor %}
+	</div>
+</div>	
+
+{%  endblock %}

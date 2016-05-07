@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<div class='container'>
+	<div class ="row">
+		<div class="col-md-12" align="center">
+		<h1> A Simple Django TestApp BitNomix</h1>
+		</div>
+	</div>
+	
+	<div class ="row">
+		<div class="col-md-3">
+		 	<img src='{{ MEDIA_URL }}background.jpg' alt="..." height="300" width="1150">
+		</div>
+	</div>
+	
+	<div class ="row">
+			<div align="center">
+				<h1>Tell Us Your Buy Requirement</h1>
+			</div>
+		<div class="col-md-4">
+{% include "form/create.html" %}
+		</div>
+		<div class="col-md-8">
+		 	<img src='{{ MEDIA_URL }}side.jpg' alt="..." height="500" width="500">
+		</div>
+
+
+	</div>
+
+
+	 <div class="row" align="center">
+	 		  <h1>Categories</h1>
+
+{%  for each in category %}
+		  <div class="col-md-3" align="center">
+		    <a href="{% url 'sub_category' each.slug %}">
+				    <div class="thumbnail">
+				      <img src='{{ MEDIA_URL }}{{ each.image }}' alt="...">
+				      <div class="caption">
+				        <h3>{{each.category_name}}</h3>
+				      </div>
+				  	</div>
+		  	</a>
+		  </div>	
+{% endfor %}
+
+	</div>
+</div>	
+
+
+
+
+
+
+{%  endblock %}
